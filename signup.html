@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign up · Xcout</title>
+<meta name="description" content="Create your early-access Xcout profile — athletes, coaches, scouts and organizations.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#f8f5ef">
+<link rel="icon" href="logo.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="hero" style="padding-bottom:0">
+    <div class="wrap hero-in">
+      <div class="brandrow between">
+        <a class="brand" href="index.html"><img class="logo" src="logo.png" alt="Xcout logo"><div class="brandname">X<span>cout</span></div></a>
+        <a class="back" href="index.html">← Back</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="wrap" id="form" style="padding-top:8px">
+    <div class="kicker">Join Xcout</div>
+    <div class="sec-title">Create your early-access profile</div>
+    <div class="formcard">
+      <div class="msg err" id="errBox"></div>
+
+      <form id="signup" novalidate>
+        <div class="field">
+          <label>I am a <span class="req">*</span></label>
+          <select id="role" name="Role" required>
+            <option value="" disabled selected>Select your role…</option>
+            <option>Athlete</option><option>Coach</option><option>Scout</option><option>Organization</option>
+          </select>
+        </div>
+
+        <div class="grid2">
+          <div class="field"><label>Full name <span class="req">*</span></label><input name="Name" required placeholder="Your name"></div>
+          <div class="field"><label>WhatsApp / phone <span class="req">*</span></label><input name="Phone" required inputmode="tel" placeholder="+233 …"></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label>Email</label><input name="Email" type="email" placeholder="you@email.com"></div>
+          <div class="field"><label>Location <span class="req">*</span></label><input name="Location" required placeholder="City / area, e.g. Madina, Accra"></div>
+        </div>
+
+        <!-- ATHLETE -->
+        <div class="role-fields" data-role="Athlete">
+          <div class="rf-head">Athlete details</div>
+          <div class="grid2">
+            <div class="field"><label>Position</label><select name="Position"><option value="" disabled selected>Select…</option><option>Point Guard</option><option>Shooting Guard</option><option>Small Forward</option><option>Power Forward</option><option>Center</option></select></div>
+            <div class="field"><label>Age</label><input name="Age" inputmode="numeric" placeholder="e.g. 17"></div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label>Height</label><input name="Height" placeholder="e.g. 6'2&quot; / 188cm"></div>
+            <div class="field"><label>Current team / school</label><input name="Team_or_School" placeholder="Club or school"></div>
+          </div>
+          <div class="field"><label>Highlight video link</label><input name="Video_Link" type="url" placeholder="YouTube / Drive / Instagram link"></div>
+        </div>
+
+        <!-- COACH -->
+        <div class="role-fields" data-role="Coach">
+          <div class="rf-head">Coach details</div>
+          <div class="grid2">
+            <div class="field"><label>Team / club</label><input name="Coach_Team" placeholder="Team you coach"></div>
+            <div class="field"><label>Level</label><select name="Coach_Level"><option value="" disabled selected>Select…</option><option>Basic / JHS</option><option>SHS</option><option>Academy</option><option>Division 1 / League</option><option>Other</option></select></div>
+          </div>
+          <div class="field"><label>Years coaching</label><input name="Coach_Years" inputmode="numeric" placeholder="e.g. 5"></div>
+        </div>
+
+        <!-- SCOUT -->
+        <div class="role-fields" data-role="Scout">
+          <div class="rf-head">Scout details</div>
+          <div class="grid2">
+            <div class="field"><label>Organization / club</label><input name="Scout_Org" placeholder="Who you scout for"></div>
+            <div class="field"><label>Your role / title</label><input name="Scout_Title" placeholder="e.g. Talent scout"></div>
+          </div>
+          <div class="field"><label>Regions / countries of interest</label><input name="Scout_Regions" placeholder="e.g. West Africa, Europe, US colleges"></div>
+        </div>
+
+        <!-- ORGANIZATION -->
+        <div class="role-fields" data-role="Organization">
+          <div class="rf-head">Organization details</div>
+          <div class="grid2">
+            <div class="field"><label>Organization name</label><input name="Org_Name" placeholder="Official name"></div>
+            <div class="field"><label>Type</label><select name="Org_Type"><option value="" disabled selected>Select…</option><option>Academy</option><option>League</option><option>Club</option><option>Federation</option><option>Sponsor / Brand</option><option>Other</option></select></div>
+          </div>
+          <div class="field"><label>Website / social</label><input name="Org_Link" placeholder="Link (optional)"></div>
+        </div>
+
+        <div class="field"><label>Tell us about yourself</label><textarea name="Message" placeholder="A few lines — goals, what you're looking for, anything we should know."></textarea></div>
+
+        <input type="hidden" name="_subject" value="🏀 New Xcout sign-up">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input class="honey" type="text" name="_honey" tabindex="-1" autocomplete="off">
+
+        <button class="btn btn-primary submit" type="submit" id="submitBtn">Join Xcout →</button>
+        <div class="formnote">No fees, ever. We'll reach out personally on WhatsApp.</div>
+      </form>
+
+      <div class="success" id="successBox">
+        <div class="tick">✓</div>
+        <h3>You're in! 🏀</h3>
+        <p>Thanks for signing up. We'll reach out to you personally on WhatsApp — keep an eye on your phone.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="wrap">
+    <span>Xcout · Accra, Ghana</span>
+    <a href="index.html">← Home</a>
+  </footer>
+
+<script>
+  // sign-ups are emailed here (FormSubmit) AND appended to a Google Sheet
+  var SIGNEE_EMAIL   = "adalaramzy@gmail.com";
+  var SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbw-XFuuUD9XmVMUffvKZPBAq7rQCXn9PHfYYUuoiLCQQw3AHaZjZRnD2mmQJ2VKUGlt/exec";
+
+  var roleSelect = document.getElementById('role');
+  var roleGroups = document.querySelectorAll('.role-fields');
+
+  function syncRoleFields(){
+    var val = roleSelect.value;
+    roleGroups.forEach(function(g){
+      var on = g.dataset.role === val;
+      g.classList.toggle('on', on);
+      g.querySelectorAll('input,select,textarea').forEach(function(el){ el.disabled = !on; });
+    });
+  }
+  roleSelect.addEventListener('change', syncRoleFields);
+
+  // pre-select role from ?role= in the URL
+  (function(){
+    var r = new URLSearchParams(location.search).get('role');
+    var valid = ['Athlete','Coach','Scout','Organization'];
+    if(r && valid.indexOf(r) !== -1){ roleSelect.value = r; }
+    syncRoleFields();
+  })();
+
+  function sendToSheet(data){
+    if(!SHEET_ENDPOINT || SHEET_ENDPOINT.indexOf('__')===0) return;
+    fetch(SHEET_ENDPOINT, {method:'POST', mode:'no-cors',
+      headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(data)}).catch(function(){});
+  }
+
+  var form = document.getElementById('signup');
+  var errBox = document.getElementById('errBox');
+  var submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    errBox.style.display='none';
+    if(!form.checkValidity()){ form.reportValidity(); return; }
+
+    var data = {};
+    new FormData(form).forEach(function(v,k){ if(v) data[k]=v; });
+
+    submitBtn.disabled=true; submitBtn.textContent='Sending…';
+    sendToSheet(data);   // append to Google Sheet (fire-and-forget)
+    fetch('https://formsubmit.co/ajax/'+SIGNEE_EMAIL, {
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify(data)
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(){
+      form.style.display='none';
+      document.getElementById('successBox').style.display='block';
+      document.getElementById('form').scrollIntoView({behavior:'smooth'});
+    })
+    .catch(function(){
+      errBox.textContent = "Something went wrong sending your details. Please try again, or reach us on WhatsApp.";
+      errBox.style.display='block';
+      submitBtn.disabled=false; submitBtn.textContent='Join Xcout →';
+    });
+  });
+</script>
+</body>
+</html>

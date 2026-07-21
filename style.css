@@ -1,0 +1,91 @@
+:root{
+  --bg:#f8f5ef; --panel:#ffffff; --panel-2:#fbf8f2; --border:#ece3d5;
+  --ink:#211c16; --ink-dim:#6f675c; --ink-faint:#a89e8f;
+  --accent:#e05a1f; --accent-2:#ff7a3d; --accent-soft:#fdeadf; --accent-line:rgba(224,90,31,.28);
+  --wa:#25d366; --wa-dark:#1da851;
+  --radius:18px; --shadow:0 18px 44px -26px rgba(60,40,20,.4);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);line-height:1.6;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:620px;margin:0 auto;padding:0 22px}
+
+.hero{position:relative;overflow:hidden;padding:60px 0 16px}
+.hero::before{content:"";position:absolute;inset:-45% 0 auto 0;height:520px;pointer-events:none;
+  background:radial-gradient(55% 55% at 28% 0%,rgba(224,90,31,.18),transparent 70%)}
+.hero-in{position:relative}
+.brandrow{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+.brandrow.between{justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo{width:46px;height:46px;object-fit:contain;border-radius:12px;background:var(--panel);border:1px solid var(--border);padding:6px}
+.brandname{font-weight:800;letter-spacing:.3px;font-size:18px}
+.brandname span{color:var(--accent)}
+.back{font-size:13px;font-weight:700;color:var(--ink-dim);text-decoration:none}
+.back:hover{color:var(--accent)}
+
+.badge{display:inline-flex;align-items:center;gap:7px;background:var(--accent-soft);color:var(--accent);
+  font-size:11.5px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:7px 14px;border-radius:100px;
+  border:1px solid var(--accent-line);margin-bottom:20px}
+.badge .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(224,90,31,.5)}70%{box-shadow:0 0 0 9px rgba(224,90,31,0)}100%{box-shadow:0 0 0 0 rgba(224,90,31,0)}}
+
+h1{font-size:clamp(32px,8vw,46px);font-weight:850;letter-spacing:-1px;line-height:1.06;margin-bottom:16px}
+h1 .grad{background:linear-gradient(100deg,var(--accent-2),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.lead{font-size:16.5px;color:var(--ink-dim);max-width:520px;margin-bottom:28px}
+.lead strong{color:var(--ink);font-weight:600}
+
+.btn-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;font-weight:800;
+  font-size:15.5px;padding:15px 26px;border-radius:14px;cursor:pointer;border:none;transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 12px 28px -12px rgba(224,90,31,.7)}
+.btn-primary:hover{background:#c94c17;transform:translateY(-2px)}
+.btn-wa{background:#fff;color:#0a2e18;border:1px solid var(--border)}
+.btn-wa:hover{border-color:var(--wa);transform:translateY(-2px)}
+.btn-wa svg{width:20px;height:20px;color:var(--wa)}
+
+section{padding:36px 0}
+.kicker{font-size:12px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:6px}
+.sec-title{font-size:22px;font-weight:800;letter-spacing:-.3px;margin-bottom:18px}
+
+.roles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.role{display:block;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:18px;text-align:left;
+  cursor:pointer;text-decoration:none;color:inherit;transition:border-color .2s,transform .2s,box-shadow .2s;font:inherit}
+.role:hover{border-color:var(--accent-line);transform:translateY(-3px);box-shadow:var(--shadow)}
+.role .emoji{font-size:24px;display:block;margin-bottom:10px}
+.role .label{font-weight:750;font-size:15px;margin-bottom:5px}
+.role .desc{font-size:12.5px;color:var(--ink-dim);line-height:1.55}
+.role .go{display:inline-block;margin-top:12px;font-size:12.5px;font-weight:800;color:var(--accent)}
+
+.formcard{background:var(--panel);border:1px solid var(--border);border-radius:22px;padding:26px 22px;box-shadow:var(--shadow)}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:12.5px;font-weight:700;color:var(--ink-dim);margin-bottom:6px}
+.field .req{color:var(--accent)}
+input,select,textarea{width:100%;font:inherit;font-size:15px;color:var(--ink);background:var(--panel-2);
+  border:1px solid var(--border);border-radius:12px;padding:12px 13px;transition:border-color .15s,box-shadow .15s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+textarea{resize:vertical;min-height:84px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.role-fields{display:none}
+.role-fields.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.rf-head{font-size:11.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--accent);margin:6px 0 12px}
+.submit{width:100%;margin-top:6px}
+.honey{position:absolute;left:-9999px;opacity:0;height:0;width:0}
+.formnote{font-size:12px;color:var(--ink-faint);margin-top:12px;text-align:center}
+.msg{display:none;padding:14px 16px;border-radius:12px;font-size:14px;margin-bottom:16px}
+.msg.err{display:block;background:#fdecec;border:1px solid #f5c2c2;color:#a12626}
+.success{display:none;text-align:center;padding:22px 6px}
+.success .tick{width:64px;height:64px;border-radius:50%;background:var(--accent-soft);color:var(--accent);
+  display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:30px}
+.success h3{font-size:20px;font-weight:800;margin-bottom:8px}
+.success p{color:var(--ink-dim);font-size:14.5px;max-width:360px;margin:0 auto}
+
+.honesty{background:var(--panel-2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:14px;
+  padding:18px 20px;font-size:13.5px;color:var(--ink-dim);line-height:1.65}
+.honesty strong{color:var(--ink)}
+footer{border-top:1px solid var(--border);padding:26px 0 46px;margin-top:14px;font-size:12.5px;color:var(--ink-faint);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+footer a{color:var(--ink-dim);text-decoration:none}
+footer a:hover{color:var(--accent)}

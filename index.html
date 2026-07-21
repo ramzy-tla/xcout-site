@@ -4,145 +4,301 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Xcout — Real visibility for Ghanaian basketball talent</title>
-<meta name="description" content="Xcout connects local basketball talent across Ghana with real scouts, academies, and clubs — in Africa and abroad. No fees. No fake agents.">
+<meta name="description" content="Xcout connects local basketball talent across Ghana with real scouts, academies, and clubs — in Africa and abroad. No fees. No fake agents. Sign up free.">
 <link rel="canonical" href="https://ramzy-tla.github.io/xcout-site/">
 
-<!-- Open Graph / WhatsApp / Facebook preview -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Xcout — Real visibility for Ghanaian basketball talent">
 <meta property="og:description" content="Connecting local players with real scouts, academies, and clubs across Africa and abroad. No fees. No fake agents.">
 <meta property="og:image" content="https://ramzy-tla.github.io/xcout-site/og-image.png">
 <meta property="og:url" content="https://ramzy-tla.github.io/xcout-site/">
-
-<!-- Twitter/X preview -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Xcout — Real visibility for Ghanaian basketball talent">
 <meta name="twitter:description" content="Connecting local players with real scouts, academies, and clubs across Africa and abroad.">
 <meta name="twitter:image" content="https://ramzy-tla.github.io/xcout-site/og-image.png">
 
-<meta name="theme-color" content="#0e1116">
+<meta name="theme-color" content="#f8f5ef">
 <link rel="icon" href="logo.png">
 
 <style>
   :root{
-    --bg:#0e1116; --panel:#171b22; --panel-2:#1e232c; --border:#2a303b;
-    --ink:#f5f3ef; --ink-dim:#a2a9b4; --ink-faint:#6f7681;
-    --accent:#e05a1f; --accent-2:#ff7a3d; --accent-soft:rgba(224,90,31,.14);
+    --bg:#f8f5ef; --panel:#ffffff; --panel-2:#fbf8f2; --border:#ece3d5;
+    --ink:#211c16; --ink-dim:#6f675c; --ink-faint:#a89e8f;
+    --accent:#e05a1f; --accent-2:#ff7a3d; --accent-soft:#fdeadf; --accent-line:rgba(224,90,31,.28);
     --wa:#25d366; --wa-dark:#1da851;
-    --radius:18px;
+    --radius:18px; --shadow:0 18px 44px -26px rgba(60,40,20,.4);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{
-    background:var(--bg); color:var(--ink); line-height:1.6;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
+  body{background:var(--bg);color:var(--ink);line-height:1.6;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
   a{color:inherit}
-  .wrap{max-width:600px;margin:0 auto;padding:0 22px}
+  .wrap{max-width:620px;margin:0 auto;padding:0 22px}
 
-  /* ambient glow */
-  .hero{position:relative;overflow:hidden;padding:64px 0 20px}
-  .hero::before{
-    content:"";position:absolute;inset:-40% 0 auto 0;height:520px;pointer-events:none;
-    background:radial-gradient(60% 60% at 30% 0%,rgba(224,90,31,.35),transparent 70%);
-    filter:blur(10px);
-  }
+  .hero{position:relative;overflow:hidden;padding:60px 0 16px}
+  .hero::before{content:"";position:absolute;inset:-45% 0 auto 0;height:520px;pointer-events:none;
+    background:radial-gradient(55% 55% at 28% 0%,rgba(224,90,31,.18),transparent 70%)}
   .hero-in{position:relative}
-  .brandrow{display:flex;align-items:center;gap:12px;margin-bottom:30px}
-  .logo{width:46px;height:46px;object-fit:contain;border-radius:12px;
-    background:var(--panel);border:1px solid var(--border);padding:6px}
+  .brandrow{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+  .logo{width:46px;height:46px;object-fit:contain;border-radius:12px;background:var(--panel);border:1px solid var(--border);padding:6px}
   .brandname{font-weight:800;letter-spacing:.3px;font-size:18px}
-  .brandname span{color:var(--accent-2)}
+  .brandname span{color:var(--accent)}
 
-  .badge{display:inline-flex;align-items:center;gap:7px;background:var(--accent-soft);
-    color:var(--accent-2);font-size:11.5px;font-weight:800;letter-spacing:.5px;
-    text-transform:uppercase;padding:7px 14px;border-radius:100px;border:1px solid rgba(224,90,31,.25);
-    margin-bottom:22px}
-  .badge .dot{width:7px;height:7px;border-radius:50%;background:var(--accent-2);
-    box-shadow:0 0 0 0 rgba(255,122,61,.6);animation:pulse 2s infinite}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,122,61,.55)}70%{box-shadow:0 0 0 9px rgba(255,122,61,0)}100%{box-shadow:0 0 0 0 rgba(255,122,61,0)}}
+  .badge{display:inline-flex;align-items:center;gap:7px;background:var(--accent-soft);color:var(--accent);
+    font-size:11.5px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:7px 14px;border-radius:100px;
+    border:1px solid var(--accent-line);margin-bottom:20px}
+  .badge .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(224,90,31,.5)}70%{box-shadow:0 0 0 9px rgba(224,90,31,0)}100%{box-shadow:0 0 0 0 rgba(224,90,31,0)}}
 
-  h1{font-size:clamp(32px,8vw,46px);font-weight:850;letter-spacing:-1px;line-height:1.06;margin-bottom:18px}
+  h1{font-size:clamp(32px,8vw,46px);font-weight:850;letter-spacing:-1px;line-height:1.06;margin-bottom:16px}
   h1 .grad{background:linear-gradient(100deg,var(--accent-2),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .lead{font-size:16.5px;color:var(--ink-dim);max-width:520px;margin-bottom:32px}
+  .lead{font-size:16.5px;color:var(--ink-dim);max-width:520px;margin-bottom:28px}
   .lead strong{color:var(--ink);font-weight:600}
 
-  /* CTA */
-  .cta{display:inline-flex;align-items:center;justify-content:center;gap:11px;
-    background:var(--wa);color:#04210f;text-decoration:none;font-weight:800;font-size:16px;
-    padding:16px 28px;border-radius:14px;width:100%;max-width:360px;
-    box-shadow:0 12px 30px -10px rgba(37,211,102,.5);transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
-  .cta:hover{background:var(--wa-dark);transform:translateY(-2px);box-shadow:0 18px 40px -12px rgba(37,211,102,.55)}
-  .cta svg{width:22px;height:22px;flex:none}
-  .cta-sub{font-size:13px;color:var(--ink-faint);margin:14px 0 4px}
+  .btn-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;font-weight:800;
+    font-size:15.5px;padding:15px 26px;border-radius:14px;cursor:pointer;border:none;transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 12px 28px -12px rgba(224,90,31,.7)}
+  .btn-primary:hover{background:#c94c17;transform:translateY(-2px)}
+  .btn-wa{background:#fff;color:#0a2e18;border:1px solid var(--border)}
+  .btn-wa:hover{border-color:var(--wa);transform:translateY(-2px)}
+  .btn-wa svg{width:20px;height:20px;color:var(--wa)}
 
-  section{padding:34px 0}
-  .kicker{font-size:12px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px}
+  section{padding:36px 0}
+  .kicker{font-size:12px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:6px}
+  .sec-title{font-size:22px;font-weight:800;letter-spacing:-.3px;margin-bottom:18px}
 
   .roles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .role{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);
-    padding:18px;transition:border-color .2s ease,transform .2s ease,background .2s ease}
-  .role:hover{border-color:rgba(224,90,31,.45);transform:translateY(-3px);background:var(--panel-2)}
+  .role{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:18px;text-align:left;cursor:pointer;
+    transition:border-color .2s,transform .2s,box-shadow .2s;font:inherit;color:inherit}
+  .role:hover{border-color:var(--accent-line);transform:translateY(-3px);box-shadow:var(--shadow)}
   .role .emoji{font-size:24px;display:block;margin-bottom:10px}
   .role .label{font-weight:750;font-size:15px;margin-bottom:5px}
   .role .desc{font-size:12.5px;color:var(--ink-dim);line-height:1.55}
+  .role .go{display:inline-block;margin-top:12px;font-size:12.5px;font-weight:800;color:var(--accent)}
 
-  .honesty{background:linear-gradient(180deg,var(--panel),var(--panel-2));
-    border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:14px;
+  /* form */
+  .formcard{background:var(--panel);border:1px solid var(--border);border-radius:22px;padding:26px 22px;box-shadow:var(--shadow)}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:12.5px;font-weight:700;color:var(--ink-dim);margin-bottom:6px}
+  .field .req{color:var(--accent)}
+  input,select,textarea{width:100%;font:inherit;font-size:15px;color:var(--ink);background:var(--panel-2);
+    border:1px solid var(--border);border-radius:12px;padding:12px 13px;transition:border-color .15s,box-shadow .15s}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+  textarea{resize:vertical;min-height:84px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .role-fields{display:none}
+  .role-fields.on{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  .rf-head{font-size:11.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--accent);margin:6px 0 12px}
+  .submit{width:100%;margin-top:6px}
+  .honey{position:absolute;left:-9999px;opacity:0;height:0;width:0}
+  .formnote{font-size:12px;color:var(--ink-faint);margin-top:12px;text-align:center}
+  .msg{display:none;padding:14px 16px;border-radius:12px;font-size:14px;margin-bottom:16px}
+  .msg.err{display:block;background:#fdecec;border:1px solid #f5c2c2;color:#a12626}
+  .success{display:none;text-align:center;padding:22px 6px}
+  .success .tick{width:64px;height:64px;border-radius:50%;background:var(--accent-soft);color:var(--accent);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:30px}
+  .success h3{font-size:20px;font-weight:800;margin-bottom:8px}
+  .success p{color:var(--ink-dim);font-size:14.5px;max-width:360px;margin:0 auto}
+
+  .honesty{background:var(--panel-2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:14px;
     padding:18px 20px;font-size:13.5px;color:var(--ink-dim);line-height:1.65}
   .honesty strong{color:var(--ink)}
-
-  footer{border-top:1px solid var(--border);padding:26px 0 46px;margin-top:14px;
-    font-size:12.5px;color:var(--ink-faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  footer{border-top:1px solid var(--border);padding:26px 0 46px;margin-top:14px;font-size:12.5px;color:var(--ink-faint);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
   footer a{color:var(--ink-dim);text-decoration:none}
-  footer a:hover{color:var(--accent-2)}
+  footer a:hover{color:var(--accent)}
 </style>
 </head>
 <body>
   <div class="hero">
     <div class="wrap hero-in">
-      <div class="brandrow">
-        <img class="logo" src="logo.png" alt="Xcout logo">
-        <div class="brandname">X<span>cout</span></div>
-      </div>
-
+      <div class="brandrow"><img class="logo" src="logo.png" alt="Xcout logo"><div class="brandname">X<span>cout</span></div></div>
       <div class="badge"><span class="dot"></span>Early access · Accra, Ghana</div>
       <h1>Real visibility for <span class="grad">Ghanaian basketball</span> talent.</h1>
-      <p class="lead">
-        <strong>Xcout</strong> connects local players with real scouts, academies and clubs —
-        in Africa and abroad. No fees. No fake agents. Just real visibility for real players.
-      </p>
-
-      <a class="cta" href="https://wa.me/233594921931?text=Hi%2C%20I%27m%20interested%20in%20Xcout" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 6.3A8.9 8.9 0 0012 4a8.9 8.9 0 00-7.7 13.4L3 21l3.7-1.3A8.9 8.9 0 0012 20.9 8.9 8.9 0 0017.6 6.3zM12 19.4a7.4 7.4 0 01-3.8-1l-.3-.2-2.2.6.6-2.2-.2-.3a7.4 7.4 0 1113.7-3.9A7.4 7.4 0 0112 19.4zm4.1-5.5c-.2-.1-1.3-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6 6 0 01-1.8-1.1 6.7 6.7 0 01-1.2-1.5c-.1-.2 0-.4.1-.5l.4-.4c.1-.1.1-.2.2-.4v-.4c0-.1-.5-1.2-.7-1.7-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.2 1.6 2.5 3.9 3.5.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1 0-.1-.2-.2-.4-.3z"/></svg>
-        Message us on WhatsApp
-      </a>
-      <p class="cta-sub">We reply personally — this is early and hands-on right now.</p>
+      <p class="lead"><strong>Xcout</strong> connects local players with real scouts, academies and clubs —
+        in Africa and abroad. No fees. No fake agents. Just real visibility for real players.</p>
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="scrollToForm()">Sign up free →</button>
+        <a class="btn btn-wa" href="https://wa.me/233594921931?text=Hi%2C%20I%27m%20interested%20in%20Xcout" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 6.3A8.9 8.9 0 0012 4a8.9 8.9 0 00-7.7 13.4L3 21l3.7-1.3A8.9 8.9 0 0012 20.9 8.9 8.9 0 0017.6 6.3zM12 19.4a7.4 7.4 0 01-3.8-1l-.3-.2-2.2.6.6-2.2-.2-.3a7.4 7.4 0 1113.7-3.9A7.4 7.4 0 0112 19.4zm4.1-5.5c-.2-.1-1.3-.7-1.5-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6 6 0 01-1.8-1.1 6.7 6.7 0 01-1.2-1.5c-.1-.2 0-.4.1-.5l.4-.4c.1-.1.1-.2.2-.4v-.4c0-.1-.5-1.2-.7-1.7-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.2 1.6 2.5 3.9 3.5.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1 0-.1-.2-.2-.4-.3z"/></svg>
+          WhatsApp
+        </a>
+      </div>
     </div>
   </div>
 
   <section class="wrap">
-    <div class="kicker">Built for everyone in the game</div>
+    <div class="kicker">Pick your lane</div>
+    <div class="sec-title">Who are you?</div>
     <div class="roles">
-      <div class="role"><span class="emoji">🏀</span><div class="label">Athletes</div><div class="desc">Get a real profile with video, seen by people who can actually open doors.</div></div>
-      <div class="role"><span class="emoji">🧢</span><div class="label">Coaches</div><div class="desc">Give your best players a shot at visibility beyond the local league.</div></div>
-      <div class="role"><span class="emoji">🔍</span><div class="label">Scouts</div><div class="desc">See verified young talent from Accra's courts and academies, free.</div></div>
-      <div class="role"><span class="emoji">🏛️</span><div class="label">Organizations</div><div class="desc">GBBA, ABL, academies — let's talk about working together.</div></div>
+      <button class="role" type="button" onclick="pickRole('Athlete')"><span class="emoji">🏀</span><div class="label">Athlete</div><div class="desc">Get a real profile with video, seen by people who can open doors.</div><span class="go">Sign up →</span></button>
+      <button class="role" type="button" onclick="pickRole('Coach')"><span class="emoji">🧢</span><div class="label">Coach</div><div class="desc">Give your best players a shot at visibility beyond the local league.</div><span class="go">Sign up →</span></button>
+      <button class="role" type="button" onclick="pickRole('Scout')"><span class="emoji">🔍</span><div class="label">Scout</div><div class="desc">See verified young talent from Accra's courts and academies, free.</div><span class="go">Sign up →</span></button>
+      <button class="role" type="button" onclick="pickRole('Organization')"><span class="emoji">🏛️</span><div class="label">Organization</div><div class="desc">GBBA, ABL, academies — let's talk about working together.</div><span class="go">Sign up →</span></button>
+    </div>
+  </section>
+
+  <section class="wrap" id="form">
+    <div class="kicker">Join Xcout</div>
+    <div class="sec-title">Create your early-access profile</div>
+    <div class="formcard">
+      <div class="msg err" id="errBox"></div>
+
+      <form id="signup" novalidate>
+        <div class="field">
+          <label>I am a <span class="req">*</span></label>
+          <select id="role" name="Role" required>
+            <option value="" disabled selected>Select your role…</option>
+            <option>Athlete</option><option>Coach</option><option>Scout</option><option>Organization</option>
+          </select>
+        </div>
+
+        <div class="grid2">
+          <div class="field"><label>Full name <span class="req">*</span></label><input name="Name" required placeholder="Your name"></div>
+          <div class="field"><label>WhatsApp / phone <span class="req">*</span></label><input name="Phone" required inputmode="tel" placeholder="+233 …"></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label>Email</label><input name="Email" type="email" placeholder="you@email.com"></div>
+          <div class="field"><label>Location <span class="req">*</span></label><input name="Location" required placeholder="City / area, e.g. Madina, Accra"></div>
+        </div>
+
+        <!-- ATHLETE -->
+        <div class="role-fields" data-role="Athlete">
+          <div class="rf-head">Athlete details</div>
+          <div class="grid2">
+            <div class="field"><label>Position</label><select name="Position"><option value="" disabled selected>Select…</option><option>Point Guard</option><option>Shooting Guard</option><option>Small Forward</option><option>Power Forward</option><option>Center</option></select></div>
+            <div class="field"><label>Age</label><input name="Age" inputmode="numeric" placeholder="e.g. 17"></div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label>Height</label><input name="Height" placeholder="e.g. 6'2\" / 188cm"></div>
+            <div class="field"><label>Current team / school</label><input name="Team_or_School" placeholder="Club or school"></div>
+          </div>
+          <div class="field"><label>Highlight video link</label><input name="Video_Link" type="url" placeholder="YouTube / Drive / Instagram link"></div>
+        </div>
+
+        <!-- COACH -->
+        <div class="role-fields" data-role="Coach">
+          <div class="rf-head">Coach details</div>
+          <div class="grid2">
+            <div class="field"><label>Team / club</label><input name="Coach_Team" placeholder="Team you coach"></div>
+            <div class="field"><label>Level</label><select name="Coach_Level"><option value="" disabled selected>Select…</option><option>Basic / JHS</option><option>SHS</option><option>Academy</option><option>Division 1 / League</option><option>Other</option></select></div>
+          </div>
+          <div class="field"><label>Years coaching</label><input name="Coach_Years" inputmode="numeric" placeholder="e.g. 5"></div>
+        </div>
+
+        <!-- SCOUT -->
+        <div class="role-fields" data-role="Scout">
+          <div class="rf-head">Scout details</div>
+          <div class="grid2">
+            <div class="field"><label>Organization / club</label><input name="Scout_Org" placeholder="Who you scout for"></div>
+            <div class="field"><label>Your role / title</label><input name="Scout_Title" placeholder="e.g. Talent scout"></div>
+          </div>
+          <div class="field"><label>Regions / countries of interest</label><input name="Scout_Regions" placeholder="e.g. West Africa, Europe, US colleges"></div>
+        </div>
+
+        <!-- ORGANIZATION -->
+        <div class="role-fields" data-role="Organization">
+          <div class="rf-head">Organization details</div>
+          <div class="grid2">
+            <div class="field"><label>Organization name</label><input name="Org_Name" placeholder="Official name"></div>
+            <div class="field"><label>Type</label><select name="Org_Type"><option value="" disabled selected>Select…</option><option>Academy</option><option>League</option><option>Club</option><option>Federation</option><option>Sponsor / Brand</option><option>Other</option></select></div>
+          </div>
+          <div class="field"><label>Website / social</label><input name="Org_Link" placeholder="Link (optional)"></div>
+        </div>
+
+        <div class="field"><label>Tell us about yourself</label><textarea name="Message" placeholder="A few lines — goals, what you're looking for, anything we should know."></textarea></div>
+
+        <!-- FormSubmit config + honeypot -->
+        <input type="hidden" name="_subject" value="🏀 New Xcout sign-up">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input class="honey" type="text" name="_honey" tabindex="-1" autocomplete="off">
+
+        <button class="btn btn-primary submit" type="submit" id="submitBtn">Join Xcout →</button>
+        <div class="formnote">No fees, ever. We'll reach out personally on WhatsApp.</div>
+      </form>
+
+      <div class="success" id="successBox">
+        <div class="tick">✓</div>
+        <h3>You're in! 🏀</h3>
+        <p>Thanks for signing up. We'll reach out to you personally on WhatsApp — keep an eye on your phone.</p>
+      </div>
     </div>
   </section>
 
   <section class="wrap" style="padding-top:6px">
-    <div class="honesty">
-      <strong>Where this actually stands:</strong> Xcout is not a live app yet. This page exists so real
-      people — players, coaches, scouts — can reach us directly while we build the first version around
-      what they actually tell us they need. If that sounds interesting, message us above.
-    </div>
+    <div class="honesty"><strong>Where this actually stands:</strong> Xcout is not a live app yet. This page exists so real
+      people — players, coaches, scouts — can sign up and reach us directly while we build the first version around what they
+      actually tell us they need.</div>
   </section>
 
   <footer class="wrap">
     <span>Xcout · Accra, Ghana</span>
-    <a href="https://wa.me/233594921931?text=Hi%2C%20I%27m%20interested%20in%20Xcout" target="_blank" rel="noopener">Contact →</a>
+    <a href="https://wa.me/233594921931?text=Hi%2C%20I%27m%20interested%20in%20Xcout" target="_blank" rel="noopener">Chat on WhatsApp →</a>
   </footer>
+
+<script>
+  // ⬇️ where sign-ups are emailed (FormSubmit). Replaced at deploy time.
+  var SIGNEE_EMAIL = "adala@forgetechne.com";
+
+  var roleSelect = document.getElementById('role');
+  var roleGroups = document.querySelectorAll('.role-fields');
+
+  function syncRoleFields(){
+    var val = roleSelect.value;
+    roleGroups.forEach(function(g){
+      var on = g.dataset.role === val;
+      g.classList.toggle('on', on);
+      // disable inputs in hidden groups so they don't submit
+      g.querySelectorAll('input,select,textarea').forEach(function(el){ el.disabled = !on; });
+    });
+  }
+  roleSelect.addEventListener('change', syncRoleFields);
+
+  function scrollToForm(){ document.getElementById('form').scrollIntoView({behavior:'smooth'}); }
+  function pickRole(r){
+    roleSelect.value = r; syncRoleFields();
+    scrollToForm();
+    setTimeout(function(){ document.querySelector('input[name="Name"]').focus({preventScroll:true}); }, 500);
+  }
+  syncRoleFields();
+
+  var form = document.getElementById('signup');
+  var errBox = document.getElementById('errBox');
+  var submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    errBox.style.display='none';
+    if(SIGNEE_EMAIL.indexOf('__')===0){
+      errBox.textContent = "Sign-ups aren't wired to an inbox yet. Please contact us on WhatsApp for now.";
+      errBox.style.display='block'; return;
+    }
+    if(!form.checkValidity()){ form.reportValidity(); return; }
+
+    var data = {};
+    new FormData(form).forEach(function(v,k){ if(v) data[k]=v; });
+
+    submitBtn.disabled=true; submitBtn.textContent='Sending…';
+    fetch('https://formsubmit.co/ajax/'+SIGNEE_EMAIL, {
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify(data)
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(){
+      form.style.display='none';
+      document.getElementById('successBox').style.display='block';
+      document.getElementById('form').scrollIntoView({behavior:'smooth'});
+    })
+    .catch(function(){
+      errBox.textContent = "Something went wrong sending your details. Please try again, or reach us on WhatsApp.";
+      errBox.style.display='block';
+      submitBtn.disabled=false; submitBtn.textContent='Join Xcout →';
+    });
+  });
+</script>
 </body>
 </html>

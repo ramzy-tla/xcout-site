@@ -242,6 +242,15 @@
 <script>
   // ⬇️ where sign-ups are emailed (FormSubmit). Replaced at deploy time.
   var SIGNEE_EMAIL = "adala@forgetechne.com";
+  // ⬇️ Google Apps Script Web App /exec URL — appends each sign-up to a Sheet. Set at deploy time.
+  var SHEET_ENDPOINT = "__SHEET_ENDPOINT__";
+
+  function sendToSheet(data){
+    if(!SHEET_ENDPOINT || SHEET_ENDPOINT.indexOf('__')===0) return;   // not configured yet
+    // no-cors + text/plain: avoids CORS preflight; Apps Script reads e.postData.contents
+    fetch(SHEET_ENDPOINT, {method:'POST', mode:'no-cors',
+      headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(data)}).catch(function(){});
+  }
 
   var roleSelect = document.getElementById('role');
   var roleGroups = document.querySelectorAll('.role-fields');
@@ -282,6 +291,7 @@
     new FormData(form).forEach(function(v,k){ if(v) data[k]=v; });
 
     submitBtn.disabled=true; submitBtn.textContent='Sending…';
+    sendToSheet(data);   // append to Google Sheet in parallel (fire-and-forget)
     fetch('https://formsubmit.co/ajax/'+SIGNEE_EMAIL, {
       method:'POST',
       headers:{'Content-Type':'application/json','Accept':'application/json'},

@@ -27,12 +27,17 @@
       <div class="msg err" id="errBox"></div>
 
       <form id="signup" novalidate>
-        <div class="field">
+        <div class="field" id="roleField">
           <label>I am a <span class="req">*</span></label>
           <select id="role" name="Role" required>
             <option value="" disabled selected>Select your role…</option>
             <option>Athlete</option><option>Coach</option><option>Scout</option><option>Organization</option>
           </select>
+        </div>
+        <div class="rolelock" id="roleLock">
+          <span class="rl-ic" id="rlIcon">🏀</span>
+          <span class="rl-txt">Signing up as <b id="rlName">Athlete</b></span>
+          <a class="rl-change" href="index.html">Change</a>
         </div>
 
         <div class="grid2">
@@ -48,32 +53,32 @@
         <div class="role-fields" data-role="Athlete">
           <div class="rf-head">Athlete details</div>
           <div class="grid2">
-            <div class="field"><label>Position</label><select name="Position"><option value="" disabled selected>Select…</option><option>Point Guard</option><option>Shooting Guard</option><option>Small Forward</option><option>Power Forward</option><option>Center</option></select></div>
-            <div class="field"><label>Age</label><input name="Age" inputmode="numeric" placeholder="e.g. 17"></div>
+            <div class="field"><label>Position <span class="req">*</span></label><select name="Position" data-req><option value="" disabled selected>Select…</option><option>Point Guard</option><option>Shooting Guard</option><option>Small Forward</option><option>Power Forward</option><option>Center</option></select></div>
+            <div class="field"><label>Age <span class="req">*</span></label><input name="Age" data-req type="number" min="8" max="60" inputmode="numeric" placeholder="e.g. 17"></div>
           </div>
           <div class="grid2">
             <div class="field"><label>Height</label><input name="Height" placeholder="e.g. 6'2&quot; / 188cm"></div>
-            <div class="field"><label>Current team / school</label><input name="Team_or_School" placeholder="Club or school"></div>
+            <div class="field"><label>Current team / school <span class="req">*</span></label><input name="Team_or_School" data-req placeholder="Club or school"></div>
           </div>
-          <div class="field"><label>Highlight video link</label><input name="Video_Link" type="url" placeholder="YouTube / Drive / Instagram link"></div>
+          <div class="field"><label>Highlight video link</label><input name="Video_Link" type="url" placeholder="https://… YouTube / Drive / Instagram"></div>
         </div>
 
         <!-- COACH -->
         <div class="role-fields" data-role="Coach">
           <div class="rf-head">Coach details</div>
           <div class="grid2">
-            <div class="field"><label>Team / club</label><input name="Coach_Team" placeholder="Team you coach"></div>
-            <div class="field"><label>Level</label><select name="Coach_Level"><option value="" disabled selected>Select…</option><option>Basic / JHS</option><option>SHS</option><option>Academy</option><option>Division 1 / League</option><option>Other</option></select></div>
+            <div class="field"><label>Team / club <span class="req">*</span></label><input name="Coach_Team" data-req placeholder="Team you coach"></div>
+            <div class="field"><label>Level <span class="req">*</span></label><select name="Coach_Level" data-req><option value="" disabled selected>Select…</option><option>Basic / JHS</option><option>SHS</option><option>Academy</option><option>Division 1 / League</option><option>Other</option></select></div>
           </div>
-          <div class="field"><label>Years coaching</label><input name="Coach_Years" inputmode="numeric" placeholder="e.g. 5"></div>
+          <div class="field"><label>Years coaching</label><input name="Coach_Years" type="number" min="0" max="60" inputmode="numeric" placeholder="e.g. 5"></div>
         </div>
 
         <!-- SCOUT -->
         <div class="role-fields" data-role="Scout">
           <div class="rf-head">Scout details</div>
           <div class="grid2">
-            <div class="field"><label>Organization / club</label><input name="Scout_Org" placeholder="Who you scout for"></div>
-            <div class="field"><label>Your role / title</label><input name="Scout_Title" placeholder="e.g. Talent scout"></div>
+            <div class="field"><label>Organization / club <span class="req">*</span></label><input name="Scout_Org" data-req placeholder="Who you scout for"></div>
+            <div class="field"><label>Your role / title <span class="req">*</span></label><input name="Scout_Title" data-req placeholder="e.g. Talent scout"></div>
           </div>
           <div class="field"><label>Regions / countries of interest</label><input name="Scout_Regions" placeholder="e.g. West Africa, Europe, US colleges"></div>
         </div>
@@ -82,8 +87,8 @@
         <div class="role-fields" data-role="Organization">
           <div class="rf-head">Organization details</div>
           <div class="grid2">
-            <div class="field"><label>Organization name</label><input name="Org_Name" placeholder="Official name"></div>
-            <div class="field"><label>Type</label><select name="Org_Type"><option value="" disabled selected>Select…</option><option>Academy</option><option>League</option><option>Club</option><option>Federation</option><option>Sponsor / Brand</option><option>Other</option></select></div>
+            <div class="field"><label>Organization name <span class="req">*</span></label><input name="Org_Name" data-req placeholder="Official name"></div>
+            <div class="field"><label>Type <span class="req">*</span></label><select name="Org_Type" data-req><option value="" disabled selected>Select…</option><option>Academy</option><option>League</option><option>Club</option><option>Federation</option><option>Sponsor / Brand</option><option>Other</option></select></div>
           </div>
           <div class="field"><label>Website / social</label><input name="Org_Link" placeholder="Link (optional)"></div>
         </div>
@@ -120,21 +125,31 @@
   var roleSelect = document.getElementById('role');
   var roleGroups = document.querySelectorAll('.role-fields');
 
+  var ROLES = {Athlete:'🏀', Coach:'🧢', Scout:'🔍', Organization:'🏛️'};
+
   function syncRoleFields(){
     var val = roleSelect.value;
     roleGroups.forEach(function(g){
       var on = g.dataset.role === val;
       g.classList.toggle('on', on);
-      g.querySelectorAll('input,select,textarea').forEach(function(el){ el.disabled = !on; });
+      g.querySelectorAll('input,select,textarea').forEach(function(el){
+        el.disabled = !on;                                   // hidden fields never submit
+        if(el.hasAttribute('data-req')) el.required = on;    // required only for the active role
+      });
     });
   }
   roleSelect.addEventListener('change', syncRoleFields);
 
-  // pre-select role from ?role= in the URL
+  // pre-select role from ?role= and lock it to the card that was clicked
   (function(){
     var r = new URLSearchParams(location.search).get('role');
-    var valid = ['Athlete','Coach','Scout','Organization'];
-    if(r && valid.indexOf(r) !== -1){ roleSelect.value = r; }
+    if(r && ROLES.hasOwnProperty(r)){
+      roleSelect.value = r;                                  // still submits (hidden ≠ disabled)
+      document.getElementById('roleField').style.display = 'none';
+      document.getElementById('rlIcon').textContent = ROLES[r];
+      document.getElementById('rlName').textContent = r;
+      document.getElementById('roleLock').classList.add('on');
+    }
     syncRoleFields();
   })();
 
@@ -155,6 +170,11 @@
 
     var data = {};
     new FormData(form).forEach(function(v,k){ if(v) data[k]=v; });
+
+    // hard guard: Role must be the one actually selected, and only its own fields ride along
+    data.Role = roleSelect.value;
+    data._subject = '🏀 New Xcout sign-up — ' + data.Role;
+    if(data.Email) data._replyto = data.Email;
 
     submitBtn.disabled=true; submitBtn.textContent='Sending…';
     sendToSheet(data);   // append to Google Sheet (fire-and-forget)

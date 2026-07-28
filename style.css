@@ -59,6 +59,14 @@ section{padding:36px 0}
 .role .go{display:inline-block;margin-top:12px;font-size:12.5px;font-weight:800;color:var(--accent)}
 
 .formcard{background:var(--panel);border:1px solid var(--border);border-radius:22px;padding:26px 22px;box-shadow:var(--shadow)}
+.rolelock{display:none;align-items:center;gap:10px;background:var(--accent-soft);border:1px solid var(--accent-line);
+  border-radius:14px;padding:12px 14px;margin-bottom:16px}
+.rolelock.on{display:flex}
+.rolelock .rl-ic{font-size:20px;line-height:1}
+.rolelock .rl-txt{font-size:14px;color:var(--ink);flex:1}
+.rolelock .rl-txt b{font-weight:800}
+.rolelock .rl-change{font-size:12.5px;font-weight:800;color:var(--accent);text-decoration:none;white-space:nowrap}
+.rolelock .rl-change:hover{text-decoration:underline}
 .field{margin-bottom:14px}
 .field label{display:block;font-size:12.5px;font-weight:700;color:var(--ink-dim);margin-bottom:6px}
 .field .req{color:var(--accent)}
